@@ -1,27 +1,46 @@
 package com.example.potify
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.potify.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
+    private var binding: FragmentHomeBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View,savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+
+        val goodAfternoonAdapter = GoodAfternoonAdapter()
+        goodAfternoonAdapter.goods = viewModel.goodAfternoon
+        binding?.goodAfternoon?.adapter = goodAfternoonAdapter
+
+        val recentlyPlayedAdapter = RecentlyPlayedAdapter()
+        recentlyPlayedAdapter.recentlies = viewModel.recentlyPlayed
+        binding?.recentlyPlayed?.adapter = recentlyPlayedAdapter
+
+        val madeForYouAdapter = MadeForYouAdapter()
+        madeForYouAdapter.mades = viewModel.madeForYou
+        binding?.madeForYou?.adapter = madeForYouAdapter
+
+        val currentDir = System.getProperty("user.dir")
+        println(currentDir)
+
     }
 
 }

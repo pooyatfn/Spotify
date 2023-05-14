@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.potify"
-        minSdk 31
+        minSdk 30
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -32,6 +32,7 @@ android {
     }
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 }
 

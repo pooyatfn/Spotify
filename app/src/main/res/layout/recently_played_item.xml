@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recentlyItem"
+    android:layout_width="124dp"
+    android:layout_height="145dp"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/recentlyImage"
+        android:layout_width="124dp"
+        android:layout_height="124dp" />
+
+    <TextView
+        android:id="@+id/recentlyText"
+        android:layout_width="wrap_content"
+        android:layout_height="14sp"
+        android:layout_gravity="start"
+        android:layout_marginTop="7dp"
+        android:textSize="11sp" />
+
+</LinearLayout>

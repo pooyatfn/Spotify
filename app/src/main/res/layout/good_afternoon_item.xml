@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/goodItem"
+    android:layout_width="187dp"
+    android:layout_height="56dp">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/goodImage"
+        android:layout_width="56dp"
+        android:layout_height="56dp" />
+
+    <TextView
+        android:id="@+id/goodText"
+        android:layout_width="wrap_content"
+        android:layout_height="14sp"
+        android:layout_gravity="center"
+        android:paddingStart="8dp"
+        android:textSize="11sp" />
+
+</LinearLayout>
