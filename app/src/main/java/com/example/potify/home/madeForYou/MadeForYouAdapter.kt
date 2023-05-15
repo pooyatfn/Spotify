@@ -1,33 +1,35 @@
-package com.example.potify
+package com.example.potify.home.madeForYou
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.potify.databinding.GoodAfternoonItemBinding
+import com.bumptech.glide.Glide
+import com.example.potify.databinding.MadeForYouItemBinding
+import com.example.potify.entities.Album
 
-class GoodAfternoonAdapter: RecyclerView.Adapter<GoodAfternoonAdapter.ViewHolder>() {
+class MadeForYouAdapter: RecyclerView.Adapter<MadeForYouAdapter.ViewHolder>() {
 
-    var goods: List<GoodAfternoonItem> = emptyList()
+    var albums: List<Album> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = GoodAfternoonItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = MadeForYouItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun getItemCount() = goods.size
+    override fun getItemCount() = albums.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val good = goods[position]
-        holder.bind(good)
+        val made = albums[position]
+        holder.bind(made)
     }
 
-    inner class ViewHolder(private val binding: GoodAfternoonItemBinding) :
+    inner class ViewHolder(private val binding: MadeForYouItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(good: GoodAfternoonItem) {
-            binding.goodImage.setImageBitmap(BitmapFactory.decodeFile(good.imageSrc))
-            binding.goodText.text = good.title
+        fun bind(album: Album) {
+            Glide.with(binding.root)
+                .load(album.imageSrc)
+                .into(binding.madeImage)
 //          binding.goodImage.apply {
 //              setImageBitmap(BitmapFactory.decodeFile(good.image))
 //                text = todo.todo

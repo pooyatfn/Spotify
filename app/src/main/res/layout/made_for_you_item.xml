@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/madeItem"
     android:layout_width="166dp"
-    android:layout_height="166dp">
+    android:layout_height="166dp"
+    android:layout_marginEnd="16dp">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/madeImage"
