@@ -11,8 +11,9 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/search_bar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="8dp"
         android:hint="Search"
         android:textColor="@color/white"
         android:textSize="14.5sp"

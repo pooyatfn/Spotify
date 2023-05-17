@@ -5,7 +5,8 @@
     android:layout_height="56dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
-    android:background="@color/goodItemBackground">
+    android:background="@color/goodItemBackground"
+    android:foreground="?android:selectableItemBackground">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/goodImage"

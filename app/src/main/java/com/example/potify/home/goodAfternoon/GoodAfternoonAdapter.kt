@@ -37,18 +37,6 @@ class GoodAfternoonAdapter : RecyclerView.Adapter<GoodAfternoonAdapter.ViewHolde
             binding.root.setOnClickListener { view ->
                 view.findNavController().navigate(R.id.action_global_playerFragment)
             }
-//          binding.goodImage.apply {
-//              setImageBitmap(BitmapFactory.decodeFile(good.image))
-//                text = todo.todo
-//                setOnCheckedChangeListener(null)
-//                isChecked = todo.isChecked
-//                setOnCheckedChangeListener { _, isChecked ->
-//                    onUpdate.invoke(todo.copy(isChecked = isChecked))
-//                }
-//          }
-//            binding.delete.setOnClickListener {
-//                onDelete.invoke(todo)
-//            }
         }
     }
 }

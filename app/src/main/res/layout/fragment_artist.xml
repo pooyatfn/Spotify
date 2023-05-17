@@ -9,8 +9,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:text="Artist"
         android:textColor="@color/black"
-        android:text="Artist" />
+        android:textSize="50sp" />
 
 </FrameLayout>

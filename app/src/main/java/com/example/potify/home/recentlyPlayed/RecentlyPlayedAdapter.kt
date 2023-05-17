@@ -2,8 +2,10 @@ package com.example.potify.home.recentlyPlayed
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.potify.R
 import com.example.potify.databinding.RecentlyPlayedItemBinding
 import com.example.potify.entities.Music
 
@@ -32,18 +34,9 @@ class RecentlyPlayedAdapter : RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHol
                 .load(music.imageSrc)
                 .into(binding.recentlyImage)
             binding.recentlyText.text = music.name
-//          binding.goodImage.apply {
-//              setImageBitmap(BitmapFactory.decodeFile(good.image))
-//                text = todo.todo
-//                setOnCheckedChangeListener(null)
-//                isChecked = todo.isChecked
-//                setOnCheckedChangeListener { _, isChecked ->
-//                    onUpdate.invoke(todo.copy(isChecked = isChecked))
-//                }
-//          }
-//            binding.delete.setOnClickListener {
-//                onDelete.invoke(todo)
-//            }
+            binding.root.setOnClickListener { view ->
+                view.findNavController().navigate(R.id.action_global_playerFragment)
+            }
         }
     }
 }

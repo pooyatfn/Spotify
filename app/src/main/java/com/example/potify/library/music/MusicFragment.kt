@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.potify.databinding.FragmentMusicBinding
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MusicFragment : Fragment() {
 
@@ -21,28 +19,18 @@ class MusicFragment : Fragment() {
     ): View {
         binding = FragmentMusicBinding.inflate(layoutInflater, container, false)
 
-        musicVPA = MusicViewPagerAdapter(parentFragmentManager, lifecycle)
+        musicVPA = MusicViewPagerAdapter(childFragmentManager, lifecycle)
         binding!!.pager.adapter = musicVPA
 
         val tabLayout = binding!!.tabLayout
-        tabLayout.addTab(tabLayout.newTab().setText("Playlists"))
-        tabLayout.addTab(tabLayout.newTab().setText("Artists"))
-        tabLayout.addTab(tabLayout.newTab().setText("Albums"))
-
-        tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                binding!!.pager.currentItem = tab.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {}
-            override fun onTabReselected(tab: TabLayout.Tab) {}
-        })
-
-        binding!!.pager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                tabLayout.selectTab(tabLayout.getTabAt(position))
-            }
-        })
+        val tabTitles: List<String> = listOf(
+            "Playlists",
+            "Artists",
+            "Albums"
+        )
+        TabLayoutMediator(tabLayout, binding!!.pager) { tab, position ->
+            tab.text = tabTitles[position]
+        }.attach()
 
         return binding!!.root
     }

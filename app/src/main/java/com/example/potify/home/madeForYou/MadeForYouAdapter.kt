@@ -31,18 +31,6 @@ class MadeForYouAdapter : RecyclerView.Adapter<MadeForYouAdapter.ViewHolder>() {
             Glide.with(binding.root)
                 .load(album.imageSrc)
                 .into(binding.madeImage)
-//          binding.goodImage.apply {
-//              setImageBitmap(BitmapFactory.decodeFile(good.image))
-//                text = todo.todo
-//                setOnCheckedChangeListener(null)
-//                isChecked = todo.isChecked
-//                setOnCheckedChangeListener { _, isChecked ->
-//                    onUpdate.invoke(todo.copy(isChecked = isChecked))
-//                }
-//          }
-//            binding.delete.setOnClickListener {
-//                onDelete.invoke(todo)
-//            }
         }
     }
 }

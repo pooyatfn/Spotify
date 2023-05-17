@@ -8,13 +8,15 @@
     android:padding="24dp"
     tools:context=".PlayerFragment">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/back"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="@drawable/back"
+        android:background="#AAAAAA"
+        android:foreground="?android:selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <ImageView
         android:id="@+id/image"
@@ -23,5 +25,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/back" />
+
+    <TextView
+        android:id="@+id/song"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:text="Only U (Slow version)"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@id/like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/like"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/like"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <TextView
+        android:id="@+id/artist"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:text="Gates Dav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/song" />
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/artist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

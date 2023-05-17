@@ -4,6 +4,7 @@
     android:layout_width="124dp"
     android:layout_height="145dp"
     android:layout_marginEnd="16dp"
+    android:foreground="?android:selectableItemBackground"
     android:orientation="vertical">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView

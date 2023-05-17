@@ -41,9 +41,6 @@ class HomeFragment : Fragment() {
         madeForYouAdapter.albums = viewModel.madeForYou
         binding?.madeForYou?.adapter = madeForYouAdapter
 
-        val currentDir = System.getProperty("user.dir")
-        println(currentDir)
-
     }
 
 }
