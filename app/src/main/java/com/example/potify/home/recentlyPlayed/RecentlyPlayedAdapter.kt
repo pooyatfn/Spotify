@@ -7,12 +7,13 @@ import com.bumptech.glide.Glide
 import com.example.potify.databinding.RecentlyPlayedItemBinding
 import com.example.potify.entities.Music
 
-class RecentlyPlayedAdapter: RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHolder>() {
+class RecentlyPlayedAdapter : RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHolder>() {
 
     var musics: List<Music> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RecentlyPlayedItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            RecentlyPlayedItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

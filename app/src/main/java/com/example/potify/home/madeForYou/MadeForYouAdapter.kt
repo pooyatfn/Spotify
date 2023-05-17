@@ -7,12 +7,13 @@ import com.bumptech.glide.Glide
 import com.example.potify.databinding.MadeForYouItemBinding
 import com.example.potify.entities.Album
 
-class MadeForYouAdapter: RecyclerView.Adapter<MadeForYouAdapter.ViewHolder>() {
+class MadeForYouAdapter : RecyclerView.Adapter<MadeForYouAdapter.ViewHolder>() {
 
     var albums: List<Album> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = MadeForYouItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            MadeForYouItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

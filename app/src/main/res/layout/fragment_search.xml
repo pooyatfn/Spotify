@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:paddingHorizontal="16dp"
-    tools:context=".SearchFragment">
+    tools:context=".search.SearchFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/search_bar"
@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_search"
         android:hint="Search"
+        android:textColor="@color/white"
         android:textSize="14.5sp"
         app:layout_constraintEnd_toStartOf="@id/cancel"
         app:layout_constraintStart_toStartOf="parent"

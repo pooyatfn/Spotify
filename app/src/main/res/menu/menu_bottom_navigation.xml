@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/selector_home"
-        android:title="Home"/>
+        android:title="Home" />
     <item
         android:id="@+id/searchFragment"
         android:icon="@drawable/selector_search"
-        android:title="Search"/>
+        android:title="Search" />
     <item
         android:id="@+id/libraryFragment"
         android:icon="@drawable/selector_library"
-        android:title="Your Library"/>
+        android:title="Your Library" />
 </menu>
