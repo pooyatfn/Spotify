@@ -58,6 +58,32 @@ class PlayerFragment : Fragment() {
             }
         })
 
+        val shuffle = binding!!.shuffle
+        var isShuffle = true
+
+        shuffle.setOnClickListener {
+            isShuffle = if (isShuffle) {
+                shuffle.setImageResource(R.drawable.ic_shuffle_fill)
+                false
+            } else {
+                shuffle.setImageResource(R.drawable.ic_shuffle)
+                true
+            }
+        }
+
+        val repeat = binding!!.repeat
+        var isRepeat = true
+
+        repeat.setOnClickListener {
+            isRepeat = if (isRepeat) {
+                repeat.setImageResource(R.drawable.ic_repeat_fill)
+                false
+            } else {
+                repeat.setImageResource(R.drawable.ic_repeat)
+                true
+            }
+        }
+
         playAudio()
         binding!!.playPauseIcon.setImageResource(R.drawable.ic_pause)
 

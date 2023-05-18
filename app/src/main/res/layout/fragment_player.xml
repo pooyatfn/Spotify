@@ -12,7 +12,6 @@
         android:id="@+id/back"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="#AAAAAA"
         android:foreground="?android:selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,21 +52,92 @@
     <SeekBar
         android:id="@+id/seekbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="4dp"
+        android:layout_marginTop="5dp"
+        android:progressDrawable="@drawable/seekbar_progress"
+        android:thumb="@drawable/seekbar_thumb"
         app:layout_constraintTop_toBottomOf="@id/artist_name" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/shuffle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_shuffle"
+        app:layout_constraintBottom_toBottomOf="@id/left"
+        app:layout_constraintEnd_toStartOf="@id/left"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/left" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/left"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="49dp"
+        android:foreground="?android:selectableItemBackground"
+        android:src="@drawable/ic_left"
+        app:layout_constraintEnd_toStartOf="@id/play_pause_icon"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/shuffle"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/play_pause_icon"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="36dp"
+        android:foreground="?android:selectableItemBackground"
+        app:layout_constraintEnd_toStartOf="@id/right"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/left"
         app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/right"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="49dp"
+        android:foreground="?android:selectableItemBackground"
+        android:src="@drawable/ic_right"
+        app:layout_constraintEnd_toStartOf="@id/repeat"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/play_pause_icon"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_repeat"
+        app:layout_constraintBottom_toBottomOf="@id/right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@id/right"
+        app:layout_constraintTop_toTopOf="@id/right" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/devices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_devices"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/shuffle"
+        app:layout_constraintTop_toBottomOf="@id/shuffle" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/queue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_queue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/repeat"
+        app:layout_constraintTop_toBottomOf="@id/shuffle" />
 
     <TextView
         android:id="@+id/start_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seekbar" />
 
@@ -75,6 +145,7 @@
         android:id="@+id/end_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seekbar" />
 
