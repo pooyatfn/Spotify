@@ -27,10 +27,9 @@
         app:layout_constraintTop_toBottomOf="@id/back" />
 
     <TextView
-        android:id="@+id/song"
+        android:id="@+id/song_title"
         android:layout_width="0dp"
         android:layout_height="28dp"
-        android:text="Only U (Slow version)"
         android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@id/like"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,17 +44,38 @@
         app:layout_constraintTop_toBottomOf="@id/image" />
 
     <TextView
-        android:id="@+id/artist"
+        android:id="@+id/artist_name"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:text="Gates Dav"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/song" />
+        app:layout_constraintTop_toBottomOf="@id/song_title" />
 
     <SeekBar
         android:id="@+id/seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/artist" />
+        app:layout_constraintTop_toBottomOf="@id/artist_name" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/play_pause_icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+    <TextView
+        android:id="@+id/start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
+
+    <TextView
+        android:id="@+id/end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

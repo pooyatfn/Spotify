@@ -26,5 +26,19 @@
         tools:layout="@layout/fragment_player" />
     <action
         android:id="@+id/action_global_playerFragment"
-        app:destination="@id/playerFragment" />
+        app:destination="@id/playerFragment">
+
+        <argument
+            android:name="song_title"
+            app:argType="string" />
+        <argument
+            android:name="artist_name"
+            app:argType="string" />
+        <argument
+            android:name="song_url"
+            app:argType="string" />
+        <argument
+            android:name="image_url"
+            app:argType="string" />
+    </action>
 </navigation>
