@@ -22,7 +22,7 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="@color/bottomBackground"
+            android:background="@color/bottomNavigationBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/menu_bottom_navigation" />
 

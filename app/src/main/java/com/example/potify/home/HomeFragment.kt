@@ -28,19 +28,23 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //        viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
-
         val goodAfternoonAdapter = GoodAfternoonAdapter()
-        goodAfternoonAdapter.musics = viewModel.goodAfternoon
         binding?.goodAfternoon?.adapter = goodAfternoonAdapter
+        viewModel.goodAfternoonLiveData.observe(viewLifecycleOwner) { musics ->
+            goodAfternoonAdapter.musics = musics
+        }
 
         val recentlyPlayedAdapter = RecentlyPlayedAdapter()
-        recentlyPlayedAdapter.musics = viewModel.recentlyPlayed
         binding?.recentlyPlayed?.adapter = recentlyPlayedAdapter
+        viewModel.recentlyPlayedLiveData.observe(viewLifecycleOwner) { musics ->
+            recentlyPlayedAdapter.musics = musics
+        }
 
         val madeForYouAdapter = MadeForYouAdapter()
-        madeForYouAdapter.albums = viewModel.madeForYou
         binding?.madeForYou?.adapter = madeForYouAdapter
-
+        viewModel.madeForYouLiveData.observe(viewLifecycleOwner) { albums ->
+            madeForYouAdapter.albums = albums
+        }
     }
 
 }
