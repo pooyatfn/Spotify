@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.potify.PlayerFragmentDirections
-import com.example.potify.databinding.GoodAfternoonItemBinding
+import com.example.potify.databinding.ItemGoodAfternoonBinding
 import com.example.potify.entities.Music
 
 class GoodAfternoonAdapter : RecyclerView.Adapter<GoodAfternoonAdapter.ViewHolder>() {
@@ -15,7 +15,7 @@ class GoodAfternoonAdapter : RecyclerView.Adapter<GoodAfternoonAdapter.ViewHolde
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            GoodAfternoonItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemGoodAfternoonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -26,7 +26,7 @@ class GoodAfternoonAdapter : RecyclerView.Adapter<GoodAfternoonAdapter.ViewHolde
         holder.bind(good)
     }
 
-    inner class ViewHolder(private val binding: GoodAfternoonItemBinding) :
+    inner class ViewHolder(private val binding: ItemGoodAfternoonBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(music: Music) {

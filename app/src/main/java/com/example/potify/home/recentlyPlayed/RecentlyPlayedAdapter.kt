@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.potify.PlayerFragmentDirections
-import com.example.potify.databinding.RecentlyPlayedItemBinding
+import com.example.potify.databinding.ItemRecentlyPlayedBinding
 import com.example.potify.entities.Music
 
 class RecentlyPlayedAdapter : RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHolder>() {
@@ -15,7 +15,7 @@ class RecentlyPlayedAdapter : RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHol
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            RecentlyPlayedItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemRecentlyPlayedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -26,7 +26,7 @@ class RecentlyPlayedAdapter : RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHol
         holder.bind(recently)
     }
 
-    inner class ViewHolder(private val binding: RecentlyPlayedItemBinding) :
+    inner class ViewHolder(private val binding: ItemRecentlyPlayedBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(music: Music) {

@@ -8,43 +8,33 @@
     android:paddingHorizontal="16dp"
     tools:context=".search.SearchFragment">
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:drawableStart="@drawable/ic_search"
-        android:drawablePadding="8dp"
-        android:hint="Search"
-        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
         android:textSize="14.5sp"
-        app:layout_constraintEnd_toStartOf="@id/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/cancel"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="Cancel"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="@id/search_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/search_bar"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/recent"
+        android:id="@+id/emptyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recent searches"
+        android:layout_marginTop="16dp"
+        android:text="No results found."
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recent_searches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/recent" />
+        android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/emptyView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
