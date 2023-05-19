@@ -24,8 +24,7 @@ class LibraryFragment : Fragment() {
 
         val tabLayout = binding!!.tabLayout
         val tabTitles: List<String> = listOf(
-            "Music",
-            "Podcasts",
+            "Songs", "Artists", "Albums"
         )
         TabLayoutMediator(tabLayout, binding!!.pager) { tab, position ->
             tab.text = tabTitles[position]
@@ -36,7 +35,6 @@ class LibraryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TabLayoutMediator()
     }
 
 }

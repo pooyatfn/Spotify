@@ -1,4 +1,4 @@
-package com.example.potify.library.music.artist
+package com.example.potify.library
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.potify.R
 
-class ArtistFragment : Fragment() {
+class AlbumFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +18,7 @@ class ArtistFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_artist, container, false)
+        return inflater.inflate(R.layout.fragment_album, container, false)
     }
+
 }
