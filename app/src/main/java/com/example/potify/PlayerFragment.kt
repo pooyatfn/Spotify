@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.potify.databinding.FragmentPlayerBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.IOException
 
 
@@ -21,26 +22,66 @@ class PlayerFragment : Fragment() {
     private var mediaPlayer: MediaPlayer? = null
     private var seekBar: SeekBar? = null
     private var audioUrl: String? = null
+    private var bottomNav: BottomNavigationView? = null
+    private var isRepeat: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        bottomNav = requireActivity().findViewById(R.id.bottomNavigationView)
+        bottomNav?.visibility = View.GONE
+
         binding = FragmentPlayerBinding.inflate(inflater, container, false)
 
         val songTitle = arguments?.getString("song_title")
         val artistName = arguments?.getString("artist_name")
-        audioUrl = arguments?.getString("song_url")
         val imageUrl = arguments?.getString("image_url")
-        Glide.with(binding!!.root).load(imageUrl).into(binding!!.image)
-        binding!!.artistName.text = artistName
-        binding!!.songTitle.text = songTitle
+        audioUrl = arguments?.getString("song_url")
+
+        binding!!.apply {
+            Glide.with(root).load(imageUrl).into(image)
+            artistNameTextView.text = artistName
+            songTitleTextView.text = songTitle
+            seekBar = seekbar
+
+            var isShuffle = true
+            shuffleImageView.setOnClickListener {
+                isShuffle = if (isShuffle) {
+                    shuffleImageView.setImageResource(R.drawable.ic_shuffle_fill)
+                    false
+                } else {
+                    shuffleImageView.setImageResource(R.drawable.ic_shuffle)
+                    true
+                }
+            }
+
+            repeatImageView.setOnClickListener {
+                isRepeat = if (isRepeat) {
+                    repeatImageView.setImageResource(R.drawable.ic_repeat)
+                    false
+                } else {
+                    repeatImageView.setImageResource(R.drawable.ic_repeat_fill)
+                    true
+                }
+            }
+
+            var isLike = false
+            likeImageView.setOnClickListener {
+                isLike = if (isLike) {
+                    likeImageView.setImageResource(R.drawable.ic_like)
+                    false
+                } else {
+                    likeImageView.setImageResource(R.drawable.ic_like_fill)
+                    true
+                }
+            }
+        }
 
         // Initialize MediaPlayer
         mediaPlayer = MediaPlayer()
         mediaPlayer?.setAudioStreamType(AudioManager.STREAM_MUSIC)
 
         // Initialize SeekBar
-        seekBar = binding!!.seekbar
         seekBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser) {
@@ -58,38 +99,11 @@ class PlayerFragment : Fragment() {
             }
         })
 
-        val shuffle = binding!!.shuffle
-        var isShuffle = true
-
-        shuffle.setOnClickListener {
-            isShuffle = if (isShuffle) {
-                shuffle.setImageResource(R.drawable.ic_shuffle_fill)
-                false
-            } else {
-                shuffle.setImageResource(R.drawable.ic_shuffle)
-                true
-            }
-        }
-
-        val repeat = binding!!.repeat
-        var isRepeat = true
-
-        repeat.setOnClickListener {
-            isRepeat = if (isRepeat) {
-                repeat.setImageResource(R.drawable.ic_repeat_fill)
-                false
-            } else {
-                repeat.setImageResource(R.drawable.ic_repeat)
-                true
-            }
-        }
-
         playAudio()
-        binding!!.playPauseIcon.setImageResource(R.drawable.ic_pause)
 
         binding!!.playPauseIcon.setOnClickListener { playPauseAudio() }
 
-        binding!!.back.setOnClickListener {
+        binding!!.backImageView.setOnClickListener {
             findNavController().popBackStack()
         }
 
@@ -117,7 +131,7 @@ class PlayerFragment : Fragment() {
         }
     }
 
-    fun playPauseAudio() {
+    private fun playPauseAudio() {
         if (mediaPlayer?.isPlaying == true) {
             mediaPlayer?.pause()
             binding!!.playPauseIcon.setImageResource(R.drawable.ic_play)
@@ -135,6 +149,14 @@ class PlayerFragment : Fragment() {
         endTimeTextView.text = formatTime(
             mediaPlayer?.duration?.minus(mediaPlayer?.currentPosition!!) ?: 0
         )
+        if (endTimeTextView.text == "00:00") {
+            if (isRepeat) {
+                mediaPlayer?.seekTo(0)
+            } else {
+                mediaPlayer?.seekTo(0)
+                playPauseAudio()
+            }
+        }
     }
 
     private fun formatTime(milliseconds: Int): String {
@@ -147,6 +169,7 @@ class PlayerFragment : Fragment() {
         super.onDestroy()
         mediaPlayer?.release()
         mediaPlayer = null
+        bottomNav?.visibility = View.VISIBLE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
