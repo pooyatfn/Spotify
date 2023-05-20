@@ -17,8 +17,7 @@ class HomeFragment : Fragment() {
     private var binding: FragmentHomeBinding? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding!!.root
@@ -26,7 +25,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
         val goodAfternoonAdapter = GoodAfternoonAdapter()
         binding?.goodAfternoon?.adapter = goodAfternoonAdapter

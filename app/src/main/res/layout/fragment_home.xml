@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Good afternoon"
+                android:text="@string/good_afternoon"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="33dp"
-                android:text="Recently played"
+                android:text="@string/recently_played"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="72dp"
-                android:text="Made for You"
+                android:text="@string/made_for_you"
                 android:textSize="24sp" />
 
             <androidx.recyclerview.widget.RecyclerView

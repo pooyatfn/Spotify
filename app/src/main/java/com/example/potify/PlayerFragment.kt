@@ -15,7 +15,6 @@ import com.example.potify.databinding.FragmentPlayerBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.IOException
 
-
 class PlayerFragment : Fragment() {
 
     private var binding: FragmentPlayerBinding? = null
@@ -172,7 +171,4 @@ class PlayerFragment : Fragment() {
         bottomNav?.visibility = View.VISIBLE
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 }

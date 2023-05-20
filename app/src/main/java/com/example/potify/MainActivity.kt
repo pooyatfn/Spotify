@@ -8,7 +8,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.potify.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    //private val viewModel by viewModels<HomeViewModel>()
 
     private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:paddingHorizontal="16dp"
-    tools:context=".search.SearchFragment">
+    tools:context=".library.artist.ArtistFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/no_results_found"
+        android:text="@string/no_song_was_found"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar" />

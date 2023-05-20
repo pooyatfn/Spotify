@@ -8,10 +8,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.potify.PlayerFragmentDirections
-import com.example.potify.R
 import com.example.potify.databinding.ItemAlbumSearchBinding
+import com.example.potify.databinding.ItemArtistSearchBinding
 import com.example.potify.databinding.ItemMusicSearchBinding
 import com.example.potify.entities.Album
+import com.example.potify.entities.Artist
 import com.example.potify.entities.Music
 import java.util.Locale
 
@@ -20,25 +21,25 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
 
     var dataList: List<Any> = emptyList()
     var filteredList = dataList
-    private var parent0: ViewGroup? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        parent0 = parent
         val musicBinding =
             ItemMusicSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val albumBinding =
             ItemAlbumSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val artistBinding =
+            ItemArtistSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return when (viewType) {
             VIEW_TYPE_MUSIC -> {
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_music_search, parent, false)
                 MusicViewHolder(musicBinding)
             }
 
             VIEW_TYPE_ALBUM -> {
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_album_search, parent, false)
                 AlbumViewHolder(albumBinding)
+            }
+
+            VIEW_TYPE_ARTIST -> {
+                ArtistViewHolder(artistBinding)
             }
 
             else -> throw IllegalArgumentException("Invalid view type")
@@ -47,10 +48,14 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
 
     class MusicViewHolder(private val binding: ItemMusicSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(music: Music) {
             Glide.with(binding.root).load(music.imageUrl).into(binding.musicImage)
             binding.musicName.text = music.title
-            binding.artistName.text = "Song · " + music.artist
+            binding.artistName.text = buildString {
+                append("Song · ")
+                append(music.artist)
+            }
             binding.root.setOnClickListener { view ->
                 val songTitle = music.title
                 val artistName = music.artist
@@ -67,10 +72,26 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
 
     class AlbumViewHolder(private val binding: ItemAlbumSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(album: Album) {
             Glide.with(binding.root).load(album.imageSrc).into(binding.albumImage)
             binding.albumName.text = album.name
-            binding.artistName.text = "Album · " + album.artist
+            binding.artistName.text = buildString {
+                append("Album · ")
+                append(album.artist)
+            }
+        }
+    }
+
+    class ArtistViewHolder(private val binding: ItemArtistSearchBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(artist: Artist) {
+            Glide.with(binding.root).load(artist.imageSrc).into(binding.artistImage)
+            binding.artistName.text = buildString {
+                append("Artist · ")
+                append(artist.name)
+            }
         }
     }
 
@@ -88,6 +109,12 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
                 val albumData = item as Album
                 albumHolder.bind(albumData)
             }
+
+            VIEW_TYPE_ARTIST -> {
+                val artistHolder = holder as ArtistViewHolder
+                val artistData = item as Artist
+                artistHolder.bind(artistData)
+            }
         }
     }
 
@@ -99,6 +126,7 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
         return when (filteredList[position]) {
             is Music -> VIEW_TYPE_MUSIC
             is Album -> VIEW_TYPE_ALBUM
+            is Artist -> VIEW_TYPE_ARTIST
             else -> throw IllegalArgumentException("Invalid data type")
         }
     }
@@ -106,6 +134,7 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
     companion object {
         private const val VIEW_TYPE_MUSIC = 0
         private const val VIEW_TYPE_ALBUM = 1
+        private const val VIEW_TYPE_ARTIST = 2
     }
 
     override fun getFilter(): Filter {
@@ -126,6 +155,10 @@ class SearchAdapter(private val listener: OnFilteredListListener) :
                             is Album -> {
                                 it.name.plus(it.artist).lowercase(Locale.getDefault())
                                     .contains(query)
+                            }
+
+                            is Artist -> {
+                                it.name.lowercase(Locale.getDefault()).contains(query)
                             }
 
                             else -> {

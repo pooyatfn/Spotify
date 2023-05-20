@@ -30,22 +30,16 @@ class GoodAfternoonAdapter : RecyclerView.Adapter<GoodAfternoonAdapter.ViewHolde
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(music: Music) {
-            Glide.with(binding.root)
-                .load(music.imageUrl)
-                .into(binding.goodImage)
+            Glide.with(binding.root).load(music.imageUrl).into(binding.goodImage)
             binding.goodText.text = music.title
             binding.root.setOnClickListener { view ->
-                //view.findNavController().navigate(R.id.action_global_playerFragment)
                 val songTitle = music.title
                 val artistName = music.artist
                 val imageUrl = music.imageUrl
                 val songUrl = music.trackUrl
 
                 val action = PlayerFragmentDirections.actionGlobalPlayerFragment(
-                    songTitle,
-                    artistName,
-                    songUrl,
-                    imageUrl
+                    songTitle, artistName, songUrl, imageUrl
                 )
                 view.findNavController().navigate(action)
             }

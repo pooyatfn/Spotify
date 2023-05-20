@@ -14,8 +14,7 @@ class LibraryFragment : Fragment() {
     private lateinit var libraryVPA: LibraryViewPagerAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentLibraryBinding.inflate(layoutInflater, container, false)
 
@@ -31,10 +30,6 @@ class LibraryFragment : Fragment() {
         }.attach()
 
         return binding!!.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
 }

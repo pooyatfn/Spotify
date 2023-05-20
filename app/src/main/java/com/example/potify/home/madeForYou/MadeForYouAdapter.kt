@@ -28,9 +28,7 @@ class MadeForYouAdapter : RecyclerView.Adapter<MadeForYouAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(album: Album) {
-            Glide.with(binding.root)
-                .load(album.imageSrc)
-                .into(binding.madeImage)
+            Glide.with(binding.root).load(album.imageSrc).into(binding.madeImage)
         }
     }
 }
