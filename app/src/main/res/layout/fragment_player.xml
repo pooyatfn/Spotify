@@ -90,7 +90,6 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="36dp"
-        android:foreground="?android:selectableItemBackground"
         android:src="@drawable/ic_pause"
         app:layout_constraintEnd_toStartOf="@id/right"
         app:layout_constraintHorizontal_chainStyle="spread"
